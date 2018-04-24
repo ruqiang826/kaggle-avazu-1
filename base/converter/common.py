@@ -49,6 +49,7 @@ def parallel_convert(cvt_path, arg_paths, nr_thread):
         cmd = '{0}'.format(os.path.join('.', cvt_path))
         for path in arg_paths:
             cmd += ' {0}'.format(path+'.__tmp__.{0}'.format(i))
+        print(cmd)
         worker = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
         workers.append(worker)
     for worker in workers:

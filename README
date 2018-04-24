@@ -1,3 +1,22 @@
+forked from 4 idiots 
+
+## read code for "./run.sh 0"
+1. main logic is in base/run.py
+2. factorization machine solver is in mark/mark1/mark1. compile it first for further use. there is a readme in the dir, explained the input data format
+3. then generate data from train.csv
+  ./util/gen_data.py ../tr.r0.csv ../va.r0.csv tr.r0.app.new.csv va.r0.app.new.csv tr.r0.site.new.csv va.r0.site.new.csv
+  2 input data: tr.r0.csv. va.r0.csv.  tr.r0.csv is a symbol link of original train.csv.  va.r0.csv is the test data, adding a dummy label 0 to each line.
+  (but test data has no label, how can it be a validation data?)
+  there is 4 data output: train data and validation data. and divided to app data and site data
+  let's see the generation detail
+4. in gene_data, first scan data, record 4 dict of several value counts. then in gene_data, use the counts-dict as features.
+5. in parallelizer.py , the main logic is in converter/2.py.  There are some logic of split data to 12 piece, using 12 thread to handle every piece. then merge the data.
+  in converter/2.py, generate one-hot coding. but using hashstr to generate one hot coding, are there lots of missing index, and collision of hash value???
+6. 
+     
+
+
+
 4 Idiots' Approach for Click-through Rate Prediction
 ====================================================
 

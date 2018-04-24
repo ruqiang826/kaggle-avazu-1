@@ -28,7 +28,7 @@ start = time.time()
 
 def scan(path):
     for i, row in enumerate(csv.DictReader(open(path)), start=1):
-        if i % 1000000 == 0:
+        if i % 100000 == 0:
             sys.stderr.write('{0:6.0f}    {1}m\n'.format(time.time()-start,int(i/1000000)))
 
         user = def_user(row)

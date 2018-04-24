@@ -19,6 +19,7 @@ fields = ['pub_id','pub_domain','pub_category','banner_pos','device_model','devi
 def convert(src_path, dst_path, is_train):
     with open(dst_path, 'w') as f:
         for row in csv.DictReader(open(src_path)):
+            print(row)
             
             feats = []
 

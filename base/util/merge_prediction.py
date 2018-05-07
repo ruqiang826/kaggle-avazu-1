@@ -18,11 +18,14 @@ def inv_logistic_func(x):
 
 mprd = collections.defaultdict(list)
 for path in args['prd_paths']:
+    print("in path", path)
     prd = pickle.load(open(path, 'rb'))
     for key, value in prd.items():
+        print("kv,", key, value)
         mprd[key].append(value)
 
 for key in mprd:
+    print("###",len(mprd[key]), key, mprd[key])
     mprd[key] = logistic_func(sum(map(inv_logistic_func, mprd[key]))/len(mprd[key]))
 
 pickle.dump(mprd, open(args['out_path'], 'wb'))

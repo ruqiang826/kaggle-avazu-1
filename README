@@ -12,7 +12,22 @@ forked from 4 idiots
 4. in gene_data, first scan data, record 4 dict of several value counts. then in gene_data, use the counts-dict as features.
 5. in parallelizer.py , the main logic is in converter/2.py.  There are some logic of split data to 12 piece, using 12 thread to handle every piece. then merge the data.
   in converter/2.py, generate one-hot coding. but using hashstr to generate one hot coding, are there lots of missing index, and collision of hash value???
-6. 
+6. run mark1, this program do train and predict in one run. the predict output in xxx.prd.
+7. there is a merge Prediction stage. the main logic is in :
+   logistic_func(sum(map(inv_logistic_func, mprd[key]))/len(mprd[key]))
+   this function may be used in bagging peroid. inverse the logistic function and get the average value of Prediction, then make it to logic again.
+   in base ,len(mprd[key]) is always 1.
+8. using run.sh 0 , submit the output base.r0.prd, get a score of 0.3832105, rank 10 th.
+
+
+=======================================
+improvement
+
+1. directly implement the one hot encoding, using index ,not hash str. using all features and no feature engineering . 
+   submit to Kaggle, the score is 0.4091047, rank 1000 +
+2. a way to do feature engineering : if some one-hot feature is missing in validation or test set, there must have influence in model Prediction. there is some way to improve the feature. like:
+   hour feature. just keep hour, delete date.  14123100 - > 00 . or generate several features, like, hour, weekday, weekend, holiday, etc.
+
      
 
 
